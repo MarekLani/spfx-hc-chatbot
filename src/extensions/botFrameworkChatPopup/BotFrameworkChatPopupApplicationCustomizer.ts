@@ -8,8 +8,7 @@ import {
 import * as strings from 'BotFrameworkChatPopupApplicationCustomizerStrings';
 import * as React from "react";  
 import * as ReactDOM from "react-dom";  
-import BotFrameworkChatPopupApplicationChat from "./components/BotFrameworkChatPopupApplicationChat";
-import { IBotFrameworkChatPopupApplicationChatProps } from "./components/IBotFrameworkChatPopupApplicationChatProps";
+import { BotFrameworkChatPopupApplicationChat, IBotFrameworkChatPopupApplicationChatProps } from "./components/BotFrameworkChatPopupApplicationChat";
 
 const LOG_SOURCE: string = 'BotFrameworkChatPopupApplicationCustomizer';
 
@@ -67,7 +66,9 @@ export default class BotFrameworkChatPopupApplicationCustomizer
         }  
         this._bottomPlaceholder.domElement.innerHTML = `<div id="customShareTeamsBTN" class="teams-share-button" data-href="${document.location.href}"></div>`;
         const elem: React.ReactElement<IBotFrameworkChatPopupApplicationChatProps> = React.createElement(BotFrameworkChatPopupApplicationChat, {
-          directLineSecret: this.properties.directLineSecret});  
+          directLineSecret: this.properties.directLineSecret,
+          context: this.context,
+          allowedSites: null});  
         ReactDOM.render(elem, this._bottomPlaceholder.domElement);      
       }  
     }  
